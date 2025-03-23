@@ -1,4 +1,9 @@
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 body {
     font-family: "Macondo", cursive;
     font-weight: 400;
@@ -9,38 +14,27 @@ body {
     text-align: center;
     scroll-behavior: smooth;
 }
-header {
-    background-color: #333;
-    color: white;
-    padding: 15px;
-    font-size: 24px;
-}
 nav {
-    color: white;
     position: fixed;
     width: 100%;
     top: 0;
     left: 0;
     display: flex;
     align-items: center;
-    justify-content: center;
-    padding: 15px 0;
-    background: rgba(30, 30, 30, 0.9); /* Darker for visibility */
+    justify-content: space-between;
+    padding: 15px 20px;
+    background: rgba(30, 30, 30, 0.9);
     transition: background 0.3s ease-in-out;
     z-index: 1000;
 }
-
 nav.scrolled {
-    background: rgba(255, 255, 255, 0); /* Lighter when scrolling */
-    filter: invert(100%);
+    background: rgba(30, 30, 30, 0.7);
 }
-
-
 .nav-links {
     display: flex;
-    gap: 30px; /* Adjust spacing */
+    gap: 30px;
+    transition: all 0.3s ease-in-out;
 }
-
 .nav-links a {
     color: white;
     text-decoration: none;
@@ -49,29 +43,55 @@ nav.scrolled {
     padding: 10px 15px;
     transition: color 0.3s ease;
 }
-
 .nav-links a:hover {
     color: #ffcc00;
 }
-
 .logo {
-    height: 50px; /* Adjust logo size */
-    position: absolute;
-    left: 20px; /* Move logo to left */
+    height: 50px;
 }
-
+.hamburger {
+    display: none;
+    cursor: pointer;
+    font-size: 28px;
+    color: white;
+    background: none;
+    border: none;
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    z-index: 1001;
+    transition: transform 0.3s ease-in-out;
+}
 @media (max-width: 768px) {
-    nav {
-        flex-direction: column;
-        padding: 10px;
+    .hamburger {
+        display: block;
     }
     .nav-links {
+        display: flex;
         flex-direction: column;
+        background: rgba(30, 30, 30, 0.9);
+        position: absolute;
+        top: 60px;
+        right: -100%;
+        width: 100%;
         text-align: center;
-        gap: 15px;
+        padding: 20px 0;
+        z-index: 999;
+        border-radius: 10px;
+        transition: right 0.3s ease-in-out;
+    }
+    .nav-links:hover{
+        color: white;
+    
+    }
+    .nav-links a {
+        padding: 15px;
+        display: block;
+    }
+    .nav-links.active {
+        right: 0;
     }
 }
-
 .menu {
     margin: 100px 20px;
     display: flex;
@@ -97,9 +117,3 @@ footer {
     margin-top: 20px;
     width: 100%;
 }
-.macondo-regular {
-    font-family: "Macondo", cursive;
-    font-weight: 400;
-    font-style: normal;
-  }
-  
